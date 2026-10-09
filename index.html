@@ -147,7 +147,7 @@
         featured: false,
         rating: 4.8,
         reviewsCount: 71,
-        image: 'https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&q=80&w=600',
+        image: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&q=80&w=600',
         shortDesc: 'Dominate search rankings with modern technical SEO, keyword architecture, and content clusters.',
         fullDesc: 'Comprehensive guide to earning organic search traffic through data-driven search engine optimization.',
         skills: ['Keyword Research', 'Technical Audit', 'Backlink Building', 'Content Architecture', 'Schema Markup'],
@@ -518,20 +518,23 @@
                   <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
                     Practical digital skills, real-world projects, internship opportunities, and career-focused support for the next generation of digital professionals.
                   </p>
+                  
+                  {/* DEMO SOCIAL CHANNELS */}
                   <div className="pt-2">
-                    <p className="text-xs text-slate-500 font-medium mb-2 uppercase tracking-wider">Demo Social Channels</p>
-                    <div className="flex space-x-2 text-slate-400">
+                    <p className="text-xs text-slate-400 font-semibold mb-2.5 uppercase tracking-wider">Demo Social Channels</p>
+                    <div className="flex items-center gap-2">
                       {[
-                        { name: 'facebook', label: 'Facebook' },
-                        { name: 'instagram', label: 'Instagram' },
-                        { name: 'linkedin', label: 'LinkedIn' },
-                        { name: 'youtube', label: 'YouTube' },
-                        { name: 'video', label: 'TikTok' },
+                        { name: 'facebook', label: 'Facebook', hover: 'hover:bg-blue-600 hover:border-blue-500 hover:text-white' },
+                        { name: 'instagram', label: 'Instagram', hover: 'hover:bg-pink-600 hover:border-pink-500 hover:text-white' },
+                        { name: 'twitter', label: "X (formerly 'Twitter')", hover: 'hover:bg-slate-800 hover:border-slate-500 hover:text-white' },
+                        { name: 'linkedin', label: 'LinkedIn', hover: 'hover:bg-sky-700 hover:border-sky-600 hover:text-white' },
+                        { name: 'youtube', label: 'YouTube', hover: 'hover:bg-red-600 hover:border-red-500 hover:text-white' },
+                        { name: 'video', label: 'TikTok', hover: 'hover:bg-cyan-600 hover:border-cyan-500 hover:text-white' },
                       ].map((item) => (
                         <button
                           key={item.label}
                           onClick={() => triggerToast(`Navigating to ${item.label} channel`)}
-                          className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all"
+                          className={`w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 flex items-center justify-center transition-all ${item.hover}`}
                           title={item.label}
                         >
                           <Icon name={item.name} className="w-4 h-4" />
@@ -1337,7 +1340,7 @@
                 title: 'Technical SEO Audits & Keyword Architecture', 
                 duration: '3 Weeks', 
                 level: 'Intermediate', 
-                img: 'https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&q=80&w=400',
+                img: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&q=80&w=400',
                 desc: 'Crawl optimization, site speed metrics, content silos, and backlink outreach.' 
               },
               { 
