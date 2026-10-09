@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SKILLORA Academy | Learn. Practice. Get Hired.</title>
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- React & ReactDOM CDN -->
+  <!-- React & ReactDOM -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <!-- Babel compiler for JSX -->
+  <!-- Babel Compiler -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -20,7 +20,7 @@
   <script type="text/babel">
     const { useState, useEffect, useMemo } = React;
 
-    // Icon helper component to load Lucide icons dynamically
+    // Helper Component for Lucide Icons in Browser
     const Icon = ({ name, className = "w-4 h-4" }) => {
       useEffect(() => {
         if (window.lucide) {
@@ -92,16 +92,158 @@
           { title: 'Module 1: Campaign Structure & Match Types', topic: 'Broad, Phrase, Exact match mechanics, campaign taxonomy.' },
           { title: 'Module 2: Smart Bidding & PMax', topic: 'Target CPA, Target ROAS, Asset groups, Signals.' }
         ]
+      },
+      {
+        id: 'meta-ads-bootcamp',
+        title: 'Meta Ads & Social Growth Bootcamp',
+        level: 'Beginner → Intermediate',
+        duration: '4 Weeks',
+        format: 'Hybrid',
+        category: 'Paid Media',
+        featured: false,
+        rating: 4.7,
+        reviewsCount: 62,
+        shortDesc: 'Build high-converting Facebook & Instagram campaigns. Master Advantage+ scaling and creative hooks.',
+        fullDesc: 'Learn how to craft high-converting ad copy, build targeted audiences, and analyze performance metrics on Meta platform.',
+        skills: ['Meta Pixel', 'Advantage+ Campaigns', 'Ad Copywriting', 'Custom Audiences', 'Funnel Design'],
+        tools: ['Meta Business Suite', 'Canva', 'CapCut', 'Meta Pixel Helper'],
+        curriculum: [
+          { title: 'Module 1: Meta Business Manager Setup', topic: 'Domain verification, CAPI setup, pixel implementation.' },
+          { title: 'Module 2: Campaign Objective Selection', topic: 'Leads vs Sales, Advantage+ Shopping, budget optimization.' }
+        ]
+      },
+      {
+        id: 'seo-organic-growth',
+        title: 'SEO & Content Growth Strategy',
+        level: 'Beginner → Intermediate',
+        duration: '5 Weeks',
+        format: 'Online Live',
+        category: 'Organic Growth',
+        featured: false,
+        rating: 4.8,
+        reviewsCount: 71,
+        shortDesc: 'Dominate search rankings with modern technical SEO, keyword architecture, and content clusters.',
+        fullDesc: 'Comprehensive guide to earning organic search traffic through data-driven search engine optimization.',
+        skills: ['Keyword Research', 'Technical Audit', 'Backlink Building', 'Content Architecture', 'Schema Markup'],
+        tools: ['Semrush', 'Ahrefs', 'Google Search Console', 'Screaming Frog'],
+        curriculum: [
+          { title: 'Module 1: Technical SEO Auditing', topic: 'Crawl errors, site speed, mobile-first indexing, Core Web Vitals.' },
+          { title: 'Module 2: Keyword Architecture', topic: 'Search intent analysis, content silos, keyword mapping.' }
+        ]
+      },
+      {
+        id: 'ga4-analytics-gtm',
+        title: 'GA4 Analytics & Tag Manager Mastery',
+        level: 'Intermediate',
+        duration: '3 Weeks',
+        format: 'In-Person',
+        category: 'Analytics',
+        featured: false,
+        rating: 4.9,
+        reviewsCount: 54,
+        shortDesc: 'Configure server-side GTM, track custom events, build automated dashboards in Looker Studio.',
+        fullDesc: 'Gain complete visibility over user behavior and campaign outcomes with modern web measurement tools.',
+        skills: ['Event Tagging', 'Custom Dimensions', 'Server-side Tracking', 'Looker Dashboards', 'Ecommerce Tracking'],
+        tools: ['Google Analytics 4', 'Google Tag Manager', 'Looker Studio', 'BigQuery Intro'],
+        curriculum: [
+          { title: 'Module 1: GA4 Data Model', topic: 'Events, Parameters, User Properties, Data Streams.' },
+          { title: 'Module 2: GTM Container Setup', topic: 'Triggers, Variables, Custom HTML, Server-side GTM setup.' }
+        ]
       }
+    ];
+
+    const INSTRUCTORS_DATA = [
+      {
+        id: 'john-smith',
+        name: 'John Smith',
+        role: 'Performance Marketing Lead',
+        exp: '8+ Years Experience',
+        bio: 'Ex-agency performance lead having managed over $2M+ in ad spend across Google, Meta, and TikTok for global SaaS and E-commerce brands.',
+        skills: ['Google Ads', 'Meta Ads', 'ROAS Optimization', 'Conversion Audit'],
+        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'
+      },
+      {
+        id: 'jane-doe',
+        name: 'Jane Doe',
+        role: 'SEO & Organic Growth Director',
+        exp: '6+ Years Experience',
+        bio: 'Specialized in organic growth, search intent architecture, and content monetization. Built organic search channels for top regional startups.',
+        skills: ['SEO Strategy', 'Technical Audits', 'Keyword Systems', 'Link Growth'],
+        image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400'
+      },
+      {
+        id: 'michael-brown',
+        name: 'Michael Brown',
+        role: 'Measurement & GA4 Specialist',
+        exp: '7+ Years Experience',
+        bio: 'Obsessed with data precision. Helps businesses transition smoothly to custom GA4 event tracking, GTM architectures, and dashboarding.',
+        skills: ['GA4', 'GTM', 'Looker Studio', 'Attribution Modeling'],
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400'
+      },
+      {
+        id: 'emily-johnson',
+        name: 'Emily Johnson',
+        role: 'Career Support & Talent Coach',
+        exp: '5+ Years Experience',
+        bio: 'Dedicated to helping students present portfolio projects, polish tech resumes, ace interviews, and land remote/local internships.',
+        skills: ['Resume Review', 'Portfolio Coaching', 'Interview Prep', 'Career Strategy'],
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400'
+      }
+    ];
+
+    const SUCCESS_STORIES = [
+      {
+        id: 'alex-t',
+        name: 'Alex Taylor',
+        before: 'Customer Support Lead',
+        program: 'Professional Digital Marketing Program',
+        built: '3 Complete Ad Campaigns + Portfolio Site',
+        outcome: 'Hired as Growth Marketer in 6 weeks',
+        quote: 'The practical hands-on projects allowed me to talk about real ROAS metrics in interviews rather than just textbook definitions.'
+      },
+      {
+        id: 'sarah-m',
+        name: 'Sarah Miller',
+        before: 'Fresh Business Graduate',
+        program: 'Google & Meta Ads Specialist',
+        built: 'E-commerce Performance Scaling Funnel',
+        outcome: 'Digital Marketing Specialist at Local Agency',
+        quote: 'SKILLORA gave me the exact agency-grade tools exposure I needed to feel confident on my very first day on the job.'
+      },
+      {
+        id: 'david-w',
+        name: 'David Wright',
+        before: 'Traditional Sales Executive',
+        program: 'SEO & Content Growth Track',
+        built: 'Full Technical SEO Audit for Local Client',
+        outcome: 'Freelance SEO Consultant (4 Retained Clients)',
+        quote: 'I transitioned from traditional cold calls to building organic lead funnels. The mentorship was crucial for my career shift.'
+      }
+    ];
+
+    const FAQS = [
+      { q: "Who can join SKILLORA Academy programs?", a: "Our programs are open to students, fresh graduates, career switchers, entrepreneurs, and working professionals looking to upskill in practical digital marketing." },
+      { q: "Do I need prior technical or coding experience?", a: "No prior experience is required for our Beginner-level and Professional Digital Marketing programs. We start with fundamentals before advancing." },
+      { q: "Are the courses held online or in-person in Kathmandu?", a: "We offer flexible formats: In-person classes at our Kathmandu, Nepal hub, Live Online interactive sessions, and Hybrid schedules." },
+      { q: "How long do the training programs take?", a: "Short specialized tracks take 3–5 weeks, while the comprehensive Professional Digital Marketing Program runs for 12 weeks." },
+      { q: "Do you provide recognized certificates upon completion?", a: "Yes, all graduates receive a verified SKILLORA Digital Certificate and direct assistance in obtaining official Google & Meta certifications." },
+      { q: "Are practical portfolio projects included?", a: "Yes! Every single student builds real-world campaign projects, audits real accounts, and creates a shareable portfolio website." },
+      { q: "Is internship placement support provided?", a: "Yes, top performers in our Professional Program get internship recommendations and portfolio reviews with our hiring network." },
+      { q: "What tools will I learn to use?", a: "You will get hands-on experience with Google Ads, Meta Ads Manager, GA4, Google Tag Manager, Semrush, Canva, Looker Studio, and more." },
+      { q: "How do I apply and confirm my seat?", a: "Simply click 'Enroll Now' or 'Apply Now', fill out the quick application form, and our admissions team will call you." },
+      { q: "What are the office hours for in-person consultation?", a: "Our admissions hub in Kathmandu, Nepal is open Monday through Friday, 10:00 AM – 6:00 PM." },
+      { q: "How can I contact the admissions team directly?", a: "You can reach us by phone/WhatsApp at +1 (800) 555-0199 or email admissions@skillora-demo.com." }
     ];
 
     function App() {
       const [currentRoute, setCurrentRoute] = useState('home');
+      const [selectedCourseId, setSelectedCourseId] = useState('pdm-program');
       const [announcementVisible, setAnnouncementVisible] = useState(true);
       const [toastMessage, setToastMessage] = useState(null);
 
-      const navigateTo = (route) => {
+      const navigateTo = (route, courseId = null) => {
         setCurrentRoute(route);
+        if (courseId) setSelectedCourseId(courseId);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };
 
@@ -113,18 +255,18 @@
       return (
         <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col antialiased">
           {toastMessage && (
-            <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 border border-slate-700 animate-bounce">
+            <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 border border-slate-700">
               <Icon name="check-circle" className="w-5 h-5 text-emerald-400" />
               <span className="text-sm font-medium">{toastMessage}</span>
             </div>
           )}
 
           {announcementVisible && (
-            <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white text-xs md:text-sm py-2 px-4 flex justify-between items-center z-50 shadow-inner">
+            <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white text-xs md:text-sm py-2 px-4 flex justify-between items-center z-50">
               <div className="flex items-center space-x-2 mx-auto md:mx-0">
-                <span className="bg-blue-500/30 text-blue-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-blue-400/30">Admissions Open</span>
+                <span className="bg-blue-500/30 text-blue-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Admissions Open</span>
                 <span>Professional Digital Marketing Program — Batch Starting Soon!</span>
-                <button onClick={() => navigateTo('enroll')} className="underline font-semibold hover:text-blue-200 transition-colors hidden sm:inline ml-2">Apply Now →</button>
+                <button onClick={() => navigateTo('enroll')} className="underline font-semibold hover:text-blue-200 ml-2">Apply Now →</button>
               </div>
               <button onClick={() => setAnnouncementVisible(false)} className="text-white/80 hover:text-white p-1">✕</button>
             </div>
@@ -132,14 +274,14 @@
 
           <header className="sticky top-0 z-40 bg-slate-950/95 backdrop-blur-md text-white border-b border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-              <div onClick={() => navigateTo('home')} className="flex items-center space-x-3 cursor-pointer group">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">S</div>
+              <div onClick={() => navigateTo('home')} className="flex items-center space-x-3 cursor-pointer">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-black text-xl text-white">S</div>
                 <div>
                   <div className="flex items-center space-x-1">
-                    <span className="text-xl font-extrabold tracking-tight text-white">SKILLORA</span>
+                    <span className="text-xl font-extrabold text-white">SKILLORA</span>
                     <span className="text-xs bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded">ACADEMY</span>
                   </div>
-                  <p className="text-[10px] text-slate-400 tracking-wider uppercase font-medium">Learn. Practice. Get Hired.</p>
+                  <p className="text-[10px] text-slate-400 uppercase font-medium">Learn. Practice. Get Hired.</p>
                 </div>
               </div>
 
@@ -151,96 +293,170 @@
                   { id: 'internship', label: 'Internship' },
                   { id: 'career', label: 'Career' },
                   { id: 'about', label: 'About' },
-                  { id: 'resources', label: 'Resources' },
                   { id: 'contact', label: 'Contact' },
                 ].map((link) => (
                   <button
                     key={link.id}
                     onClick={() => navigateTo(link.id)}
-                    className={`px-3 py-2 rounded-lg transition-all ${currentRoute === link.id ? 'bg-blue-600/20 text-blue-400 font-semibold border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
+                    className={`px-3 py-2 rounded-lg ${currentRoute === link.id ? 'bg-blue-600/20 text-blue-400 font-semibold border border-blue-500/30' : 'text-slate-300 hover:text-white'}`}
                   >
                     {link.label}
                   </button>
                 ))}
               </nav>
 
-              <button onClick={() => navigateTo('enroll')} className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-blue-600/25 transition-all">
+              <button onClick={() => navigateTo('enroll')} className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg">
                 Enroll Now
               </button>
             </div>
           </header>
 
           <main className="flex-grow">
-            <section className="relative bg-slate-950 text-white overflow-hidden pt-12 pb-24 border-b border-slate-800">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-12 items-center">
-                  <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-blue-400 text-xs font-semibold">
-                      <span>Kathmandu's Career-Focused EdTech Platform</span>
-                    </div>
-                    <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
-                      Build Digital Skills.<br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-200">Build Your Career.</span>
-                    </h1>
-                    <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0">
-                      Learn digital marketing through practical hands-on training, live campaign projects, agency internships, and dedicated career preparation in Kathmandu, Nepal.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                      <button onClick={() => navigateTo('courses')} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg transition-all">Explore Courses →</button>
-                      <button onClick={() => navigateTo('enroll')} className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold px-7 py-3.5 rounded-xl border border-slate-700 transition-all">Enroll Now</button>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-5 relative">
-                    <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-5 space-y-4">
-                      <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-xs text-slate-400">
-                        <div className="flex space-x-1.5">
-                          <div className="w-3 h-3 rounded-full bg-rose-500"></div>
-                          <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                          <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-                        </div>
-                        <span className="font-mono text-[11px] text-slate-400">campaign-analytics-dashboard.skillora</span>
+            {currentRoute === 'home' && (
+              <div className="space-y-16 pb-16">
+                <section className="relative bg-slate-950 text-white py-16 border-b border-slate-800">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+                    <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+                      <span className="inline-block bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold px-3.5 py-1.5 rounded-full">Kathmandu's Career-Focused EdTech Platform</span>
+                      <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
+                        Build Digital Skills.<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-200">Build Your Career.</span>
+                      </h1>
+                      <p className="text-slate-300 text-base leading-relaxed">
+                        Learn digital marketing through practical hands-on training, live campaign projects, agency internships, and dedicated career preparation in Kathmandu, Nepal.
+                      </p>
+                      <div className="flex justify-center lg:justify-start gap-4">
+                        <button onClick={() => navigateTo('courses')} className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3.5 rounded-xl">Explore Courses →</button>
+                        <button onClick={() => navigateTo('enroll')} className="bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold px-7 py-3.5 rounded-xl border border-slate-700">Enroll Now</button>
                       </div>
+                    </div>
 
+                    <div className="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+                      <div className="flex justify-between items-center text-xs text-slate-400 border-b border-slate-800 pb-2">
+                        <span>campaign-analytics-dashboard.skillora</span>
+                      </div>
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60 space-y-1">
-                          <span className="text-[10px] uppercase font-semibold text-slate-400">Ad Spend (ROAS)</span>
+                        <div className="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                          <span className="text-[10px] text-slate-400">Ad Spend (ROAS)</span>
                           <p className="text-lg font-bold text-emerald-400">4.82x ROAS</p>
-                          <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
-                            <div className="bg-emerald-400 h-full w-[82%]"></div>
-                          </div>
                         </div>
-                        <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60 space-y-1">
-                          <span className="text-[10px] uppercase font-semibold text-slate-400">Qualified Leads</span>
+                        <div className="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                          <span className="text-[10px] text-slate-400">Qualified Leads</span>
                           <p className="text-lg font-bold text-blue-400">1,240 Leads</p>
-                          <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
-                            <div className="bg-blue-400 h-full w-[65%]"></div>
-                          </div>
                         </div>
                       </div>
-
-                      <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-                        <div className="flex justify-between items-center text-xs">
-                          <span className="text-slate-300 font-semibold">Conversion Tracking (GA4)</span>
-                          <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-mono">+34.2%</span>
-                        </div>
-                        <div className="h-24 flex items-end justify-between gap-1 pt-4 px-1">
-                          {[35, 45, 30, 60, 75, 50, 90, 85, 95].map((h, i) => (
-                            <div key={i} className="w-full bg-blue-600/50 rounded-t" style={{ height: `${h}%` }}></div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="pt-2 flex flex-wrap gap-2 text-[10px]">
-                        {['Google Ads', 'Meta Pixel', 'GA4 Events', 'GTM Container', 'Looker Studio'].map((t) => (
-                          <span key={t} className="bg-slate-800 text-slate-300 px-2 py-1 rounded-md border border-slate-700">{t}</span>
+                      <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 h-28 flex items-end justify-between gap-1">
+                        {[35, 45, 30, 60, 75, 50, 90, 85, 95].map((h, i) => (
+                          <div key={i} className="w-full bg-blue-600 rounded-t" style={{ height: `${h}%` }}></div>
                         ))}
                       </div>
                     </div>
                   </div>
+                </section>
+
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                  <h2 className="text-3xl font-black text-slate-900 text-center">Featured Career Tracks</h2>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {COURSES_DATA.slice(0, 3).map((course) => (
+                      <div key={course.id} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                        <div className="space-y-2">
+                          <span className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md font-semibold">{course.level}</span>
+                          <h3 className="text-xl font-bold text-slate-900">{course.title}</h3>
+                          <p className="text-xs text-slate-600">{course.shortDesc}</p>
+                        </div>
+                        <button onClick={() => navigateTo('enroll')} className="w-full bg-blue-600 text-white font-semibold text-xs py-2.5 rounded-xl">Enroll Now</button>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                  <h2 className="text-3xl font-black text-slate-900 text-center">Frequently Asked Questions</h2>
+                  <div className="space-y-3 max-w-3xl mx-auto">
+                    {FAQS.map((faq, i) => (
+                      <div key={i} className="bg-white p-5 rounded-xl border border-slate-200">
+                        <p className="font-bold text-slate-900 text-sm">{faq.q}</p>
+                        <p className="text-xs text-slate-600 mt-1">{faq.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </div>
+            )}
+
+            {currentRoute === 'courses' && (
+              <div className="max-w-7xl mx-auto px-4 py-12 space-y-8">
+                <h1 className="text-3xl font-black text-slate-900">All Training Programs</h1>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {COURSES_DATA.map((course) => (
+                    <div key={course.id} className="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
+                      <span className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded font-semibold">{course.duration}</span>
+                      <h3 className="text-lg font-bold text-slate-900">{course.title}</h3>
+                      <p className="text-xs text-slate-600">{course.fullDesc}</p>
+                      <button onClick={() => navigateTo('enroll')} className="w-full bg-blue-600 text-white text-xs font-semibold py-2 rounded-xl">Apply Now</button>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </section>
+            )}
+
+            {currentRoute === 'training' && (
+              <div className="max-w-7xl mx-auto px-4 py-12 text-center space-y-6">
+                <h1 className="text-3xl font-black text-slate-900">Modular Skill Training Tracks</h1>
+                <p className="text-xs text-slate-600 max-w-lg mx-auto">Specialized short-term practical training modules designed for workplace application.</p>
+                <button onClick={() => navigateTo('enroll')} className="bg-blue-600 text-white text-xs font-semibold px-6 py-2.5 rounded-xl">Request Module Syllabus</button>
+              </div>
+            )}
+
+            {currentRoute === 'internship' && (
+              <div className="max-w-7xl mx-auto px-4 py-12 text-center space-y-6">
+                <h1 className="text-3xl font-black text-slate-900">Structured Internship Track</h1>
+                <p className="text-xs text-slate-600 max-w-lg mx-auto">Gain agency-level execution experience and build real client portfolios.</p>
+                <button onClick={() => navigateTo('enroll')} className="bg-blue-600 text-white text-xs font-semibold px-6 py-2.5 rounded-xl">Apply for Next Batch</button>
+              </div>
+            )}
+
+            {currentRoute === 'career' && (
+              <div className="max-w-7xl mx-auto px-4 py-12 text-center space-y-6">
+                <h1 className="text-3xl font-black text-slate-900">Dedicated Career Support</h1>
+                <p className="text-xs text-slate-600 max-w-lg mx-auto">Portfolio coaching, resume optimization, and mock technical interviews.</p>
+              </div>
+            )}
+
+            {currentRoute === 'about' && (
+              <div className="max-w-7xl mx-auto px-4 py-12 text-center space-y-6">
+                <h1 className="text-3xl font-black text-slate-900">About SKILLORA Academy</h1>
+                <p className="text-xs text-slate-600 max-w-lg mx-auto">Practical-first digital skills education hub located in Kathmandu, Nepal.</p>
+              </div>
+            )}
+
+            {currentRoute === 'contact' && (
+              <div className="max-w-xl mx-auto px-4 py-12 space-y-6">
+                <h1 className="text-3xl font-black text-slate-900 text-center">Contact Admissions</h1>
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 text-xs space-y-3">
+                  <p>📍 <strong>Location:</strong> Kathmandu, Nepal</p>
+                  <p>📞 <strong>Phone:</strong> +1 (800) 555-0199</p>
+                  <p>✉️ <strong>Email:</strong> admissions@skillora-demo.com</p>
+                </div>
+              </div>
+            )}
+
+            {currentRoute === 'enroll' && (
+              <div className="max-w-xl mx-auto px-4 py-16 space-y-6">
+                <h1 className="text-3xl font-black text-slate-900 text-center">Enrollment Form</h1>
+                <form onSubmit={(e) => { e.preventDefault(); triggerToast("Application Submitted!"); }} className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+                    <input type="text" required placeholder="Alex Johnson" className="w-full border p-2 rounded-xl text-xs" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Email</label>
+                    <input type="email" required placeholder="alex@example.com" className="w-full border p-2 rounded-xl text-xs" />
+                  </div>
+                  <button type="submit" className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl text-xs">Submit Application</button>
+                </form>
+              </div>
+            )}
           </main>
 
           <footer className="bg-slate-950 text-slate-400 p-6 text-center text-xs border-t border-slate-800">
