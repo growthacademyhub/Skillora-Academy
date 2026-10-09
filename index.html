@@ -1,46 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skillora Academy | Learn. Practice. Get Hired.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SKILLORA Academy | Learn. Practice. Get Hired.</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- React & ReactDOM CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Babel compiler for JSX -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
   <div id="root"></div>
 
   <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
+
+    // Icon helper component to load Lucide icons dynamically
+    const Icon = ({ name, className = "w-4 h-4" }) => {
+      useEffect(() => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }, [name]);
+      return <i data-lucide={name} className={className}></i>;
+    };
+
+    const COURSES_DATA = [
+      {
+        id: 'pdm-program',
+        title: 'Professional Digital Marketing Program',
+        level: 'Beginner → Job Ready',
+        duration: '12 Weeks',
+        format: 'Hybrid / Live',
+        category: 'Full Stack',
+        featured: true,
+        rating: 4.9,
+        reviewsCount: 128,
+        shortDesc: 'Master end-to-end digital marketing: SEO, Performance Ads, GA4, tracking, and launch campaign portfolios.',
+        fullDesc: 'Our flagship career track designed to turn absolute beginners or transitioners into job-ready growth marketers with real project experience, internship placements, and interview coaching.',
+        skills: ['SEO', 'Google Ads', 'Meta Ads', 'GA4 & GTM', 'Copywriting', 'Conversion Tracking', 'Portfolio'],
+        tools: ['Google Ads Manager', 'Meta Ads Manager', 'Google Analytics 4', 'GTM', 'Semrush', 'Canva', 'Looker Studio'],
+        curriculum: [
+          { title: 'Module 1: Fundamentals & Marketing Funnels', topic: 'Customer journey mapping, USP design, target persona construction, digital channels matrix.' },
+          { title: 'Module 2: Search Engine Optimization (SEO)', topic: 'On-page SEO, technical audits, keyword research, link-building outreach, site speed optimization.' },
+          { title: 'Module 3: Google Ads Masterclass', topic: 'Search Ads, Performance Max, Display, Bidding strategies, Quality Score tuning.' },
+          { title: 'Module 4: Meta Ads & Paid Social', topic: 'Audience targeting, creative testing framework, Pixel & CAPI setup, Retargeting funnels.' },
+          { title: 'Module 5: Analytics, GA4 & GTM', topic: 'Custom event tracking, conversion tagging, custom reporting in Looker Studio.' },
+          { title: 'Module 6: Capstone Portfolio & Internship Prep', topic: 'Building live portfolio projects, resume optimization, mock technical interviews.' }
+        ]
+      },
+      {
+        id: 'performance-marketing',
+        title: 'Performance Marketing Specialist',
+        level: 'Intermediate',
+        duration: '6 Weeks',
+        format: 'Online Live',
+        category: 'Paid Media',
+        featured: true,
+        rating: 4.8,
+        reviewsCount: 84,
+        shortDesc: 'Deep dive into ROAS optimization, scale multi-channel paid ads, CAC reduction, and retention loops.',
+        fullDesc: 'Geared towards marketers who want to specialize strictly in data-driven paid acquisition and performance attribution.',
+        skills: ['Funnel Optimization', 'ROAS Scaling', 'A/B Testing', 'CAPI Setup', 'Creative Strategy'],
+        tools: ['Meta Ads', 'Google Ads', 'TikTok Ads Manager', 'Supermetrics'],
+        curriculum: [
+          { title: 'Module 1: Paid Acquisition Unit Economics', topic: 'LTV/CAC calculation, attribution models, budget allocation algorithms.' },
+          { title: 'Module 2: Rapid Creative Testing Framework', topic: 'HOOK & CTA variations, dynamic creative optimization, video ads hooks.' },
+          { title: 'Module 3: Advanced Retargeting & LTV', topic: 'Custom audiences, lookalikes, email nurture sync.' }
+        ]
+      },
+      {
+        id: 'google-ads-mastery',
+        title: 'Google Ads & Search Marketing Training',
+        level: 'Beginner → Intermediate',
+        duration: '4 Weeks',
+        format: 'In-Person',
+        category: 'Paid Media',
+        featured: false,
+        rating: 4.9,
+        reviewsCount: 95,
+        shortDesc: 'Master Search, Performance Max, Youtube Ads, and Smart Bidding strategies with real ad accounts.',
+        fullDesc: 'Get practical experience setting up, structuring, and optimizing Google Ads campaigns for lead generation and e-commerce.',
+        skills: ['PMax Campaigns', 'Keyword Matching', 'Negative Keywords', 'Quality Score', 'Conversion Tracking'],
+        tools: ['Google Ads Manager', 'Google Keyword Planner', 'Google Tag Manager'],
+        curriculum: [
+          { title: 'Module 1: Campaign Structure & Match Types', topic: 'Broad, Phrase, Exact match mechanics, campaign taxonomy.' },
+          { title: 'Module 2: Smart Bidding & PMax', topic: 'Target CPA, Target ROAS, Asset groups, Signals.' }
+        ]
+      }
+    ];
+
     function App() {
+      const [currentRoute, setCurrentRoute] = useState('home');
+      const [announcementVisible, setAnnouncementVisible] = useState(true);
+      const [toastMessage, setToastMessage] = useState(null);
+
+      const navigateTo = (route) => {
+        setCurrentRoute(route);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      const triggerToast = (msg) => {
+        setToastMessage(msg);
+        setTimeout(() => setToastMessage(null), 4000);
+      };
+
       return (
-        <div className="min-h-screen flex flex-col justify-between bg-slate-950 text-white">
-          <header className="border-b border-slate-800 p-6 flex justify-between items-center max-w-7xl mx-auto w-full">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-black text-xl">S</div>
-              <span className="text-xl font-bold tracking-tight">SKILLORA <span className="text-xs bg-blue-600 px-1.5 py-0.5 rounded">ACADEMY</span></span>
+        <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col antialiased">
+          {toastMessage && (
+            <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 border border-slate-700 animate-bounce">
+              <Icon name="check-circle" className="w-5 h-5 text-emerald-400" />
+              <span className="text-sm font-medium">{toastMessage}</span>
             </div>
-            <a href="#enroll" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all">Enroll Now</a>
+          )}
+
+          {announcementVisible && (
+            <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white text-xs md:text-sm py-2 px-4 flex justify-between items-center z-50 shadow-inner">
+              <div className="flex items-center space-x-2 mx-auto md:mx-0">
+                <span className="bg-blue-500/30 text-blue-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-blue-400/30">Admissions Open</span>
+                <span>Professional Digital Marketing Program — Batch Starting Soon!</span>
+                <button onClick={() => navigateTo('enroll')} className="underline font-semibold hover:text-blue-200 transition-colors hidden sm:inline ml-2">Apply Now →</button>
+              </div>
+              <button onClick={() => setAnnouncementVisible(false)} className="text-white/80 hover:text-white p-1">✕</button>
+            </div>
+          )}
+
+          <header className="sticky top-0 z-40 bg-slate-950/95 backdrop-blur-md text-white border-b border-slate-800">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+              <div onClick={() => navigateTo('home')} className="flex items-center space-x-3 cursor-pointer group">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">S</div>
+                <div>
+                  <div className="flex items-center space-x-1">
+                    <span className="text-xl font-extrabold tracking-tight text-white">SKILLORA</span>
+                    <span className="text-xs bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded">ACADEMY</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400 tracking-wider uppercase font-medium">Learn. Practice. Get Hired.</p>
+                </div>
+              </div>
+
+              <nav className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+                {[
+                  { id: 'home', label: 'Home' },
+                  { id: 'courses', label: 'Courses' },
+                  { id: 'training', label: 'Training' },
+                  { id: 'internship', label: 'Internship' },
+                  { id: 'career', label: 'Career' },
+                  { id: 'about', label: 'About' },
+                  { id: 'resources', label: 'Resources' },
+                  { id: 'contact', label: 'Contact' },
+                ].map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => navigateTo(link.id)}
+                    className={`px-3 py-2 rounded-lg transition-all ${currentRoute === link.id ? 'bg-blue-600/20 text-blue-400 font-semibold border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </nav>
+
+              <button onClick={() => navigateTo('enroll')} className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-blue-600/25 transition-all">
+                Enroll Now
+              </button>
+            </div>
           </header>
 
-          <main className="max-w-4xl mx-auto text-center px-4 py-20 space-y-6">
-            <span className="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold px-3.5 py-1.5 rounded-full">Kathmandu's Career-Focused EdTech Platform</span>
-            <h1 className="text-5xl font-black tracking-tight leading-tight">
-              Build Digital Skills.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-200">Build Your Career.</span>
-            </h1>
-            <p className="text-slate-300 text-base max-w-xl mx-auto">
-              Learn digital marketing through practical hands-on training, live campaign projects, agency internships, and dedicated career preparation in Kathmandu, Nepal.
-            </p>
-            <div className="pt-4 flex justify-center gap-4">
-              <a href="#courses" className="bg-blue-600 text-white font-semibold px-7 py-3.5 rounded-xl">Explore Programs</a>
-            </div>
+          <main className="flex-grow">
+            <section className="relative bg-slate-950 text-white overflow-hidden pt-12 pb-24 border-b border-slate-800">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-12 items-center">
+                  <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-blue-400 text-xs font-semibold">
+                      <span>Kathmandu's Career-Focused EdTech Platform</span>
+                    </div>
+                    <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
+                      Build Digital Skills.<br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-200">Build Your Career.</span>
+                    </h1>
+                    <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                      Learn digital marketing through practical hands-on training, live campaign projects, agency internships, and dedicated career preparation in Kathmandu, Nepal.
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                      <button onClick={() => navigateTo('courses')} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg transition-all">Explore Courses →</button>
+                      <button onClick={() => navigateTo('enroll')} className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold px-7 py-3.5 rounded-xl border border-slate-700 transition-all">Enroll Now</button>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-5 relative">
+                    <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-5 space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-xs text-slate-400">
+                        <div className="flex space-x-1.5">
+                          <div className="w-3 h-3 rounded-full bg-rose-500"></div>
+                          <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                          <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                        </div>
+                        <span className="font-mono text-[11px] text-slate-400">campaign-analytics-dashboard.skillora</span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60 space-y-1">
+                          <span className="text-[10px] uppercase font-semibold text-slate-400">Ad Spend (ROAS)</span>
+                          <p className="text-lg font-bold text-emerald-400">4.82x ROAS</p>
+                          <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                            <div className="bg-emerald-400 h-full w-[82%]"></div>
+                          </div>
+                        </div>
+                        <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60 space-y-1">
+                          <span className="text-[10px] uppercase font-semibold text-slate-400">Qualified Leads</span>
+                          <p className="text-lg font-bold text-blue-400">1,240 Leads</p>
+                          <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                            <div className="bg-blue-400 h-full w-[65%]"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="text-slate-300 font-semibold">Conversion Tracking (GA4)</span>
+                          <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-mono">+34.2%</span>
+                        </div>
+                        <div className="h-24 flex items-end justify-between gap-1 pt-4 px-1">
+                          {[35, 45, 30, 60, 75, 50, 90, 85, 95].map((h, i) => (
+                            <div key={i} className="w-full bg-blue-600/50 rounded-t" style={{ height: `${h}%` }}></div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-2 flex flex-wrap gap-2 text-[10px]">
+                        {['Google Ads', 'Meta Pixel', 'GA4 Events', 'GTM Container', 'Looker Studio'].map((t) => (
+                          <span key={t} className="bg-slate-800 text-slate-300 px-2 py-1 rounded-md border border-slate-700">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </main>
 
-          <footer className="border-t border-slate-800 p-6 text-center text-xs text-slate-500">
-            © 2026 SKILLORA Academy. All rights reserved. Kathmandu, Nepal.
+          <footer className="bg-slate-950 text-slate-400 p-6 text-center text-xs border-t border-slate-800">
+            Copyright © 2026 SKILLORA Academy. All rights reserved. Kathmandu, Nepal.
           </footer>
         </div>
       );
