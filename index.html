@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillora Academy | Learn. Practice. Get Hired.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function App() {
+      return (
+        <div className="min-h-screen flex flex-col justify-between bg-slate-950 text-white">
+          <header className="border-b border-slate-800 p-6 flex justify-between items-center max-w-7xl mx-auto w-full">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-black text-xl">S</div>
+              <span className="text-xl font-bold tracking-tight">SKILLORA <span className="text-xs bg-blue-600 px-1.5 py-0.5 rounded">ACADEMY</span></span>
+            </div>
+            <a href="#enroll" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all">Enroll Now</a>
+          </header>
+
+          <main className="max-w-4xl mx-auto text-center px-4 py-20 space-y-6">
+            <span className="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold px-3.5 py-1.5 rounded-full">Kathmandu's Career-Focused EdTech Platform</span>
+            <h1 className="text-5xl font-black tracking-tight leading-tight">
+              Build Digital Skills.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-200">Build Your Career.</span>
+            </h1>
+            <p className="text-slate-300 text-base max-w-xl mx-auto">
+              Learn digital marketing through practical hands-on training, live campaign projects, agency internships, and dedicated career preparation in Kathmandu, Nepal.
+            </p>
+            <div className="pt-4 flex justify-center gap-4">
+              <a href="#courses" className="bg-blue-600 text-white font-semibold px-7 py-3.5 rounded-xl">Explore Programs</a>
+            </div>
+          </main>
+
+          <footer className="border-t border-slate-800 p-6 text-center text-xs text-slate-500">
+            © 2026 SKILLORA Academy. All rights reserved. Kathmandu, Nepal.
+          </footer>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
