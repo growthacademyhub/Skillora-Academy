@@ -258,6 +258,7 @@
         category: 'Google Ads',
         date: 'Jan 15, 2026',
         readTime: '6 min read',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600',
         excerpt: 'Learn how Smart Bidding, Performance Max asset groups, and negative keywords work together to drive low-cost leads.'
       },
       {
@@ -266,6 +267,7 @@
         category: 'Meta Ads',
         date: 'Feb 02, 2026',
         readTime: '5 min read',
+        image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=600',
         excerpt: 'Stop users from scrolling past your ads with proven UGC hook formulas and high-converting visual angles.'
       },
       {
@@ -274,6 +276,7 @@
         category: 'Analytics',
         date: 'Feb 18, 2026',
         readTime: '8 min read',
+        image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=600',
         excerpt: 'A step-by-step tutorial on triggering custom form submissions and click events without writing complex code.'
       },
       {
@@ -282,6 +285,7 @@
         category: 'Career',
         date: 'Mar 01, 2026',
         readTime: '7 min read',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600',
         excerpt: 'Learn how capstone exercises, mock client audits, and self-run budget experiments build a bulletproof career portfolio.'
       }
     ];
@@ -516,15 +520,22 @@
                   </p>
                   <div className="pt-2">
                     <p className="text-xs text-slate-500 font-medium mb-2 uppercase tracking-wider">Demo Social Channels</p>
-                    <div className="flex space-x-3 text-slate-400">
-                      {['Facebook', 'Instagram', 'LinkedIn', 'YouTube', 'TikTok'].map((platform) => (
-                        <span 
-                          key={platform} 
-                          className="text-xs bg-slate-900 border border-slate-800 px-2.5 py-1 rounded hover:text-white cursor-pointer transition-colors"
-                          onClick={() => triggerToast(`Navigating to ${platform} placeholder`)}
+                    <div className="flex space-x-2 text-slate-400">
+                      {[
+                        { name: 'facebook', label: 'Facebook' },
+                        { name: 'instagram', label: 'Instagram' },
+                        { name: 'linkedin', label: 'LinkedIn' },
+                        { name: 'youtube', label: 'YouTube' },
+                        { name: 'video', label: 'TikTok' },
+                      ].map((item) => (
+                        <button
+                          key={item.label}
+                          onClick={() => triggerToast(`Navigating to ${item.label} channel`)}
+                          className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all"
+                          title={item.label}
                         >
-                          {platform}
-                        </span>
+                          <Icon name={item.name} className="w-4 h-4" />
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -1301,28 +1312,71 @@
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: 'Google Search Ads & Smart Bidding', duration: '2 Weeks', level: 'Beginner → Intermediate', desc: 'Campaign taxonomy, quality score tuning, and smart bidding algorithms.' },
-              { title: 'Meta Ads Creative & Advantage+', duration: '2 Weeks', level: 'Beginner → Intermediate', desc: 'High-converting video hooks, Advantage+ shopping campaigns, custom audience scaling.' },
-              { title: 'GA4 Custom Tagging & GTM', duration: '2 Weeks', level: 'Intermediate', desc: 'Custom event variables, datalayers, and Looker Studio client dashboards.' },
-              { title: 'Technical SEO Audits & Keyword Architecture', duration: '3 Weeks', level: 'Intermediate', desc: 'Crawl optimization, site speed metrics, content silos, and backlink outreach.' },
-              { title: 'Copywriting & Content Funnels', duration: '1 Week', level: 'All Levels', desc: 'Ad copywriting frameworks (AIDA, PAS), high-converting landing page structure.' },
-              { title: 'E-commerce Media Buying & Scaling', duration: '2 Weeks', level: 'Intermediate', desc: 'Catalog ads, TikTok shop scaling, ROAS tracking, and retention email sync.' }
+              { 
+                title: 'Google Search Ads & Smart Bidding', 
+                duration: '2 Weeks', 
+                level: 'Beginner → Intermediate', 
+                img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400',
+                desc: 'Campaign taxonomy, quality score tuning, and smart bidding algorithms.' 
+              },
+              { 
+                title: 'Meta Ads Creative & Advantage+', 
+                duration: '2 Weeks', 
+                level: 'Beginner → Intermediate', 
+                img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=400',
+                desc: 'High-converting video hooks, Advantage+ shopping campaigns, custom audience scaling.' 
+              },
+              { 
+                title: 'GA4 Custom Tagging & GTM', 
+                duration: '2 Weeks', 
+                level: 'Intermediate', 
+                img: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=400',
+                desc: 'Custom event variables, datalayers, and Looker Studio client dashboards.' 
+              },
+              { 
+                title: 'Technical SEO Audits & Keyword Architecture', 
+                duration: '3 Weeks', 
+                level: 'Intermediate', 
+                img: 'https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&q=80&w=400',
+                desc: 'Crawl optimization, site speed metrics, content silos, and backlink outreach.' 
+              },
+              { 
+                title: 'Copywriting & Content Funnels', 
+                duration: '1 Week', 
+                level: 'All Levels', 
+                img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=400',
+                desc: 'Ad copywriting frameworks (AIDA, PAS), high-converting landing page structure.' 
+              },
+              { 
+                title: 'E-commerce Media Buying & Scaling', 
+                duration: '2 Weeks', 
+                level: 'Intermediate', 
+                img: 'https://images.unsplash.com/photo-1556742049-0a67d517c531?auto=format&fit=crop&q=80&w=400',
+                desc: 'Catalog ads, TikTok shop scaling, ROAS tracking, and retention email sync.' 
+              }
             ].map((track, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:border-blue-400 transition-all flex flex-col justify-between">
-                <div className="space-y-3">
-                  <div className="flex justify-between text-xs">
-                    <span className="font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded">{track.duration}</span>
-                    <span className="text-slate-500">{track.level}</span>
+              <div key={i} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:border-blue-400 transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="h-36 w-full bg-slate-100 overflow-hidden relative">
+                    <SafeImage src={track.img} alt={track.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
-                  <h3 className="font-bold text-slate-900 text-lg">{track.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{track.desc}</p>
+                  <div className="p-6 space-y-3">
+                    <div className="flex justify-between text-xs">
+                      <span className="font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded">{track.duration}</span>
+                      <span className="text-slate-500">{track.level}</span>
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-lg">{track.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{track.desc}</p>
+                  </div>
                 </div>
-                <button
-                  onClick={() => navigateTo('enroll')}
-                  className="w-full bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 font-semibold text-xs py-2.5 rounded-xl transition-colors mt-4"
-                >
-                  Request Module Syllabus
-                </button>
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => navigateTo('enroll')}
+                    className="w-full bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 font-semibold text-xs py-2.5 rounded-xl transition-colors mt-2"
+                  >
+                    Request Module Syllabus
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -1343,13 +1397,32 @@
 
           <div className="grid lg:grid-cols-3 gap-8">
             {[
-              { title: '1. Real Campaign Execution', desc: 'Work on actual marketing briefs, audit existing account performance, and recommend campaign improvements.' },
-              { title: '2. Mentor Supervision', desc: 'Receive daily guidance and code/tag reviews from experienced digital agency leads.' },
-              { title: '3. Hiring Network Placements', desc: 'Top program graduates receive direct interviews and portfolio submissions with our regional agency partners.' },
+              { 
+                title: '1. Real Campaign Execution', 
+                img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400',
+                desc: 'Work on actual marketing briefs, audit existing account performance, and recommend campaign improvements.' 
+              },
+              { 
+                title: '2. Mentor Supervision', 
+                img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400',
+                desc: 'Receive daily guidance and code/tag reviews from experienced digital agency leads.' 
+              },
+              { 
+                title: '3. Hiring Network Placements', 
+                img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400',
+                desc: 'Top program graduates receive direct interviews and portfolio submissions with our regional agency partners.' 
+              },
             ].map((block, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                <h3 className="font-bold text-slate-900 text-lg">{block.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{block.desc}</p>
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden space-y-4 hover:border-blue-300 transition-all group flex flex-col justify-between">
+                <div>
+                  <div className="h-40 w-full bg-slate-100 overflow-hidden relative">
+                    <SafeImage src={block.img} alt={block.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="p-6 space-y-2">
+                    <h3 className="font-bold text-slate-900 text-lg">{block.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{block.desc}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -1383,16 +1456,47 @@
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: 'Portfolio Website Coaching', desc: 'Convert course deliverables into a clean, shareable live website displaying real campaign metrics.' },
-              { title: 'Tech Resume & LinkedIn Optimization', desc: 'Format your profile with relevant skill keywords, ad budget metrics, and tool certifications.' },
-              { title: 'Mock Marketing Technical Interviews', desc: 'Practice answering campaign setup, ROAS troubleshooting, and keyword architecture questions.' },
-              { title: 'Salary & Freelance Contract Advice', desc: 'Learn how to quote freelance client monthly retainers and negotiate job offers.' },
-              { title: 'Google & Meta Certification Guidance', desc: 'Step-by-step assistance in passing official Google Ads Search & Meta Certified Digital Associate exams.' },
-              { title: 'Alumni Growth Community Access', desc: 'Connect with former graduates currently working as performance leads, SEO managers, and media buyers.' }
+              { 
+                title: 'Portfolio Website Coaching', 
+                img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400',
+                desc: 'Convert course deliverables into a clean, shareable live website displaying real campaign metrics.' 
+              },
+              { 
+                title: 'Tech Resume & LinkedIn Optimization', 
+                img: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=400',
+                desc: 'Format your profile with relevant skill keywords, ad budget metrics, and tool certifications.' 
+              },
+              { 
+                title: 'Mock Marketing Technical Interviews', 
+                img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+                desc: 'Practice answering campaign setup, ROAS troubleshooting, and keyword architecture questions.' 
+              },
+              { 
+                title: 'Salary & Freelance Contract Advice', 
+                img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400',
+                desc: 'Learn how to quote freelance client monthly retainers and negotiate job offers.' 
+              },
+              { 
+                title: 'Google & Meta Certification Guidance', 
+                img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=400',
+                desc: 'Step-by-step assistance in passing official Google Ads Search & Meta Certified Digital Associate exams.' 
+              },
+              { 
+                title: 'Alumni Growth Community Access', 
+                img: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=400',
+                desc: 'Connect with former graduates currently working as performance leads, SEO managers, and media buyers.' 
+              }
             ].map((c, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-                <h3 className="font-bold text-slate-900 text-base">{c.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{c.desc}</p>
+              <div key={i} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:border-blue-300 transition-all group flex flex-col justify-between">
+                <div>
+                  <div className="h-36 w-full bg-slate-100 overflow-hidden relative">
+                    <SafeImage src={c.img} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="p-6 space-y-2">
+                    <h3 className="font-bold text-slate-900 text-base">{c.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{c.desc}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -1412,21 +1516,41 @@
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 text-center">
-              <Icon name="graduation-cap" className="w-10 h-10 text-blue-600 mx-auto" />
-              <h3 className="font-bold text-slate-900 text-lg">Practical First</h3>
-              <p className="text-xs text-slate-600">Students work directly inside ad managers and analytics containers rather than viewing static slideshows.</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 text-center">
-              <Icon name="users" className="w-10 h-10 text-blue-600 mx-auto" />
-              <h3 className="font-bold text-slate-900 text-lg">Industry Mentors</h3>
-              <p className="text-xs text-slate-600">Instructors actively manage live digital growth budgets for companies and startups.</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 text-center">
-              <Icon name="rocket" className="w-10 h-10 text-blue-600 mx-auto" />
-              <h3 className="font-bold text-slate-900 text-lg">Outcome Driven</h3>
-              <p className="text-xs text-slate-600">Our success is measured by student portfolios built, internships secured, and job offers received.</p>
-            </div>
+            {[
+              {
+                title: 'Practical First',
+                icon: 'graduation-cap',
+                img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400',
+                desc: 'Students work directly inside ad managers and analytics containers rather than viewing static slideshows.'
+              },
+              {
+                title: 'Industry Mentors',
+                icon: 'users',
+                img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400',
+                desc: 'Instructors actively manage live digital growth budgets for companies and startups.'
+              },
+              {
+                title: 'Outcome Driven',
+                icon: 'rocket',
+                img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400',
+                desc: 'Our success is measured by student portfolios built, internships secured, and job offers received.'
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group hover:border-blue-400 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="h-40 w-full bg-slate-100 overflow-hidden relative">
+                    <SafeImage src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-sm text-blue-600 flex items-center justify-center shadow-md">
+                      <Icon name={item.icon} className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div className="p-6 space-y-2 text-center">
+                    <h3 className="font-bold text-slate-900 text-lg">{item.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       );
@@ -1522,6 +1646,10 @@
               <p className="text-xs text-slate-400">{selectedBlog.date} • {selectedBlog.readTime}</p>
             </div>
 
+            <div className="overflow-hidden rounded-2xl h-64 sm:h-80 w-full bg-slate-100">
+              <SafeImage src={selectedBlog.image} alt={selectedBlog.title} className="w-full h-full object-cover" />
+            </div>
+
             <div className="prose prose-slate max-w-none space-y-4 text-sm text-slate-700 leading-relaxed bg-white p-8 rounded-2xl border border-slate-200">
               <p><strong>Overview:</strong> {selectedBlog.excerpt}</p>
               <p>
@@ -1550,20 +1678,27 @@
 
           <div className="grid md:grid-cols-2 gap-8">
             {BLOG_POSTS.map((post) => (
-              <div key={post.id} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="bg-blue-50 text-blue-600 font-bold px-2.5 py-0.5 rounded">{post.category}</span>
-                    <span className="text-slate-400">{post.readTime}</span>
+              <div key={post.id} className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all overflow-hidden space-y-4 flex flex-col justify-between group">
+                <div>
+                  <div className="h-44 w-full bg-slate-100 overflow-hidden relative">
+                    <SafeImage src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <span className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-blue-600 text-xs font-bold px-2.5 py-0.5 rounded shadow-sm">
+                      {post.category}
+                    </span>
                   </div>
-                  <h3 className="font-bold text-slate-900 text-xl hover:text-blue-600 cursor-pointer" onClick={() => setSelectedBlog(post)}>
-                    {post.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{post.excerpt}</p>
+                  <div className="p-6 space-y-2">
+                    <div className="flex justify-between items-center text-xs text-slate-400">
+                      <span>{post.date}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-xl hover:text-blue-600 cursor-pointer" onClick={() => setSelectedBlog(post)}>
+                      {post.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{post.excerpt}</p>
+                  </div>
                 </div>
-                <div className="pt-2 flex justify-between items-center text-xs">
-                  <span className="text-slate-400">{post.date}</span>
-                  <button onClick={() => setSelectedBlog(post)} className="font-bold text-blue-600 hover:underline">
+                <div className="p-6 pt-0 flex justify-end">
+                  <button onClick={() => setSelectedBlog(post)} className="text-xs font-bold text-blue-600 hover:underline">
                     Read Full Guide →
                   </button>
                 </div>
